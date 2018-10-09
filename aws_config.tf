@@ -55,6 +55,7 @@ resource "aws_iam_role_policy_attachment" "aws_config_iam_policy_attachment" {
 }
 
 data "template_file" "aws_config_iam_policy_document" {
+  count    = "${var.enable_aws_config}"
   template = "${file("${path.module}/policies/aws_config_policy.tpl")}"
 
   vars {
